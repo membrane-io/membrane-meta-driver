@@ -1,0 +1,143 @@
+{
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "actions": [
+          {
+            "name": "configure",
+            "type": "Void",
+            "params": [
+              {
+                "name": "token",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "action",
+            "type": "String",
+            "params": [
+              {
+                "name": "gref",
+                "type": "String",
+                "optional": true
+              }
+            ]
+          },
+          {
+            "name": "query",
+            "type": "String",
+            "params": [
+              {
+                "name": "query",
+                "type": "String",
+                "optional": true
+              },
+              {
+                "name": "ref",
+                "type": "String",
+                "optional": true
+              }
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "name": "programs",
+            "type": "ProgramCollection"
+          },
+          {
+            "name": "status",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "ProgramCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "Program",
+            "params": [
+              {
+                "name": "pid",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "page",
+            "type": "ProgramPage",
+            "params": [
+              {
+                "name": "include_schemas",
+                "type": "Boolean"
+              },
+              {
+                "name": "include_expressions",
+                "type": "Boolean"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ProgramPage",
+        "fields": [
+          {
+            "name": "items",
+            "type": "List",
+            "ofType": "Program"
+          },
+          {
+            "name": "next",
+            "type": "ProgramPage",
+            "ofType": "RootPage"
+          }
+        ]
+      },
+      {
+        "name": "Program",
+        "fields": [
+          {
+            "name": "name",
+            "type": "String",
+            "hints": {
+              "primary": true
+            }
+          },
+          {
+            "name": "pid",
+            "type": "String"
+          },
+          {
+            "name": "status",
+            "type": "String"
+          },
+          {
+            "name": "endpoint",
+            "type": "String"
+          },
+          {
+            "name": "schema",
+            "type": "String"
+          },
+          {
+            "name": "expressions",
+            "type": "String"
+          }
+        ],
+        "actions": [
+          {
+            "name": "kill",
+            "type": "Void"
+          }
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "http": "http:"
+  }
+}
