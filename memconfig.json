@@ -72,11 +72,13 @@
             "params": [
               {
                 "name": "include_schemas",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               },
               {
                 "name": "include_expressions",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               }
             ]
           }

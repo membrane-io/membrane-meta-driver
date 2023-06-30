@@ -23,7 +23,7 @@ async function api(method: string, path: string, query?: any, body?: any) {
 export const Root = {
   status() {
     if (!state.token) {
-      return `Not ready`;
+      return `Not ready`; 
     } else {
       return `Ready`;
     }
