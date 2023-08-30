@@ -16,7 +16,7 @@
           },
           {
             "name": "action",
-            "type": "String",
+            "type": "Json",
             "params": [
               {
                 "name": "gref",
@@ -27,7 +27,7 @@
           },
           {
             "name": "query",
-            "type": "String",
+            "type": "Json",
             "params": [
               {
                 "name": "query",
@@ -123,11 +123,11 @@
           },
           {
             "name": "schema",
-            "type": "String"
+            "type": "Json"
           },
           {
             "name": "expressions",
-            "type": "String"
+            "type": "Json"
           }
         ],
         "actions": [

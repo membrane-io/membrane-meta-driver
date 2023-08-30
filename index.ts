@@ -34,11 +34,11 @@ export const Root = {
   programs: () => ({}),
   action: async ({ args: { gref } }) => {
     const res = await api("POST", "action", null, JSON.stringify({ gref }));
-    return JSON.stringify(await res.json());
+    return await res.json();
   },
   query: async ({ args: { ref, query } }) => {
     const res = await api("POST", "query", null, JSON.stringify({ gref: ref, query }));
-    return JSON.stringify(await res.json());
+    return await res.json();
   },
 };
 
@@ -51,8 +51,8 @@ export const ProgramCollection = {
 
     // Check if the program is found
     if (program) {
-      program.schema = JSON.stringify(program.schema);
-      program.expressions = JSON.stringify(program.expressions);
+      program.schema = program.schema;
+      program.expressions = program.expressions;
     }
     return program;
   },
@@ -68,7 +68,7 @@ export const Program = {
     return root.programs.one({ pid: obj.pid });
   },
   schema: ({ obj }) => {
-    return JSON.stringify(obj.schema);
+    return obj.schema;
   },
   kill: async ({ self }) => {
     const { pid } = self.$argsAt(root.programs.one);
