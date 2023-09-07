@@ -29,7 +29,7 @@ async function api(
   if (res.status !== 200) {
     throw new Error(`Membrane API returned ${res.status}: ${res.text()}`);
   }
-  return await fetch(url, req);
+  return res;
 }
 
 export const Root = {
