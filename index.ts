@@ -1,10 +1,18 @@
 import { nodes, root, state } from "membrane";
 
-async function api(method: string, path: string, query?: any, body?: any) {
+async function api(
+  method: "GET" | "POST",
+  path: string,
+  query?: any,
+  body?: any
+) {
   if (query) {
-    Object.keys(query).forEach((key) => (query[key] === undefined ? delete query[key] : {}));
+    Object.keys(query).forEach((key) =>
+      query[key] === undefined ? delete query[key] : {}
+    );
   }
-  const querystr = query && Object.keys(query).length ? `?${new URLSearchParams(query)}` : "";
+  const querystr =
+    query && Object.keys(query).length ? `?${new URLSearchParams(query)}` : "";
 
   //******************* TODO: use https ***************//
   const url = `http://api.membrane.io/${path}${querystr}`;
@@ -17,13 +25,17 @@ async function api(method: string, path: string, query?: any, body?: any) {
       "Content-Type": "application/json",
     },
   };
+  const res = await fetch(url, req);
+  if (res.status !== 200) {
+    throw new Error(`Membrane API returned ${res.status}: ${res.text()}`);
+  }
   return await fetch(url, req);
 }
 
 export const Root = {
   status() {
     if (!state.token) {
-      return `Not ready`; 
+      return `Not ready`;
     } else {
       return `Ready`;
     }
@@ -37,14 +49,22 @@ export const Root = {
     return await res.json();
   },
   query: async ({ args: { ref, query } }) => {
-    const res = await api("POST", "query", null, JSON.stringify({ gref: ref, query }));
+    const res = await api(
+      "POST",
+      "query",
+      null,
+      JSON.stringify({ gref: ref, query })
+    );
     return await res.json();
   },
 };
 
 export const ProgramCollection = {
   one: async ({ args: { pid } }) => {
-    const res = await api("GET", `ps?include_schemas=true&include_expressions=true`);
+    const res = await api(
+      "GET",
+      `ps?include_schemas=true&include_expressions=true`
+    );
     const data = await res.json();
     // Find the program with the specified pid
     const program = data.programs.find((p: any) => p.pid === pid);
@@ -57,7 +77,10 @@ export const ProgramCollection = {
     return program;
   },
   page: async ({ args: { include_schemas, include_expressions } }) => {
-    const res = await api("GET", `ps`, { include_schemas, include_expressions });
+    const res = await api("GET", `ps`, {
+      include_schemas,
+      include_expressions,
+    });
     const data = await res.json();
     return { items: data.programs, next: null };
   },
