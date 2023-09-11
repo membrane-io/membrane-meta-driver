@@ -40,15 +40,15 @@ export const Root = {
       return `Ready`;
     }
   },
-  configure: async ({ args: { token } }) => {
+  configure: async ({ token }) => {
     state.token = token;
   },
   programs: () => ({}),
-  action: async ({ args: { gref } }) => {
+  action: async ({ gref }) => {
     const res = await api("POST", "action", null, JSON.stringify({ gref }));
     return await res.json();
   },
-  query: async ({ args: { ref, query } }) => {
+  query: async ({ ref, query }) => {
     const res = await api(
       "POST",
       "query",
@@ -60,7 +60,7 @@ export const Root = {
 };
 
 export const ProgramCollection = {
-  one: async ({ args: { pid } }) => {
+  one: async ({ pid }) => {
     const res = await api(
       "GET",
       `ps?include_schemas=true&include_expressions=true`
@@ -76,7 +76,7 @@ export const ProgramCollection = {
     }
     return program;
   },
-  page: async ({ args: { include_schemas, include_expressions } }) => {
+  page: async ({ include_schemas, include_expressions }) => {
     const res = await api("GET", `ps`, {
       include_schemas,
       include_expressions,
@@ -87,13 +87,13 @@ export const ProgramCollection = {
 };
 
 export const Program = {
-  gref: ({ obj }) => {
+  gref: (_, { obj }) => {
     return root.programs.one({ pid: obj.pid });
   },
-  schema: ({ obj }) => {
+  schema: (_, { obj }) => {
     return obj.schema;
   },
-  kill: async ({ self }) => {
+  kill: async (_, { self }) => {
     const { pid } = self.$argsAt(root.programs.one);
 
     const res = await api("POST", "kill", null, JSON.stringify({ pid }));
