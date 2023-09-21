@@ -50,6 +50,10 @@
           {
             "name": "status",
             "type": "String"
+          },
+          {
+            "name": "tests",
+            "type": "Tests"
           }
         ]
       },
@@ -134,6 +138,15 @@
           {
             "name": "kill",
             "type": "Void"
+          }
+        ]
+      },
+      {
+        "name": "Tests",
+        "actions": [
+          {
+            "name": "testGetPrograms",
+            "type": "Boolean"
           }
         ]
       }

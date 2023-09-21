@@ -57,6 +57,18 @@ export const Root = {
     );
     return await res.json();
   },
+  tests() {
+    return {};
+  },
+};
+
+export const Tests = {
+  testGetPrograms: async () => {
+    const res = await api("GET", `ps`);
+    const data = await res.json();
+
+    return Array.isArray(data.programs);
+  },
 };
 
 export const ProgramCollection = {
