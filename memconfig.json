@@ -55,7 +55,8 @@
             "name": "tests",
             "type": "Tests"
           }
-        ]
+        ],
+        "description": "A Node representing the root of the program schema 'membrane-meta-driver'. It provides actions to configure, perform actions, and query the program. It also contains fields for program collection, status, and tests."
       },
       {
         "name": "ProgramCollection",
@@ -86,7 +87,8 @@
               }
             ]
           }
-        ]
+        ],
+        "description": "A collection of programs in the program schema 'membrane-meta-driver'. It contains fields for retrieving a single program and accessing program pages."
       },
       {
         "name": "ProgramPage",
@@ -101,7 +103,8 @@
             "type": "ProgramPage",
             "ofType": "RootPage"
           }
-        ]
+        ],
+        "description": "A page of programs in the program schema 'membrane-meta-driver'. It contains fields for retrieving a list of programs and accessing the next page of programs."
       },
       {
         "name": "Program",
@@ -111,27 +114,33 @@
             "type": "String",
             "hints": {
               "primary": true
-            }
+            },
+            "description": "Action to terminate the program."
           },
           {
             "name": "pid",
-            "type": "String"
+            "type": "String",
+            "description": "The process ID of the program."
           },
           {
             "name": "status",
-            "type": "String"
+            "type": "String",
+            "description": "The status of the program."
           },
           {
             "name": "endpoint",
-            "type": "String"
+            "type": "String",
+            "description": "The endpoint of the program."
           },
           {
             "name": "schema",
-            "type": "Json"
+            "type": "Json",
+            "description": "The schema of the program."
           },
           {
             "name": "expressions",
-            "type": "Json"
+            "type": "Json",
+            "description": "The expressions of the program."
           }
         ],
         "actions": [
@@ -139,7 +148,8 @@
             "name": "kill",
             "type": "Void"
           }
-        ]
+        ],
+        "description": "A program in the program schema 'membrane-meta-driver'. It contains fields for program name, pid, status, endpoint, schema, and expressions. It also provides an action to kill the program."
       },
       {
         "name": "Tests",
@@ -148,7 +158,8 @@
             "name": "testGetPrograms",
             "type": "Boolean"
           }
-        ]
+        ],
+        "description": "A set of tests for the program schema 'membrane-meta-driver'. It provides an action to test getting programs."
       }
     ]
   },
