@@ -88,7 +88,7 @@
             ]
           }
         ],
-        "description": "A collection of programs in the program schema 'membrane-meta-driver'. It contains fields for retrieving a single program and accessing program pages."
+        "description": "Collection of programs in the program schema 'membrane-meta-driver'. It contains fields for retrieving a single program and accessing program pages."
       },
       {
         "name": "ProgramPage",
@@ -96,12 +96,14 @@
           {
             "name": "items",
             "type": "List",
-            "ofType": "Program"
+            "ofType": "Program",
+            "description": "A list of programs."
           },
           {
             "name": "next",
             "type": "ProgramPage",
-            "ofType": "RootPage"
+            "ofType": "RootPage",
+            "description": "The next page of programs."
           }
         ],
         "description": "A page of programs in the program schema 'membrane-meta-driver'. It contains fields for retrieving a list of programs and accessing the next page of programs."
@@ -115,7 +117,7 @@
             "hints": {
               "primary": true
             },
-            "description": "Action to terminate the program."
+            "description": "The name of the program."
           },
           {
             "name": "pid",
@@ -146,10 +148,11 @@
         "actions": [
           {
             "name": "kill",
-            "type": "Void"
+            "type": "Void",
+            "description": "Action to terminate the program."
           }
         ],
-        "description": "A program in the program schema 'membrane-meta-driver'. It contains fields for program name, pid, status, endpoint, schema, and expressions. It also provides an action to kill the program."
+        "description": "A program in the membrane-meta-driver schema. It contains fields for program name, pid, status, endpoint, schema, and expressions. It also provides an action to terminate the program."
       },
       {
         "name": "Tests",
