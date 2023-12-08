@@ -12,8 +12,7 @@
                 "name": "token",
                 "type": "String"
               }
-            ],
-            "description": "Configures the program with a token."
+            ]
           },
           {
             "name": "action",
@@ -24,8 +23,7 @@
                 "type": "String",
                 "optional": true
               }
-            ],
-            "description": "Performs an action with an optional gref."
+            ]
           },
           {
             "name": "query",
@@ -41,25 +39,21 @@
                 "type": "String",
                 "optional": true
               }
-            ],
-            "description": "Queries the program with optional query and ref."
+            ]
           }
         ],
         "fields": [
           {
             "name": "programs",
-            "type": "ProgramCollection",
-            "description": "Collection of programs."
+            "type": "ProgramCollection"
           },
           {
             "name": "status",
-            "type": "String",
-            "description": "Status of the program."
+            "type": "String"
           },
           {
             "name": "tests",
-            "type": "Tests",
-            "description": "Tests related to the program."
+            "type": "Tests"
           }
         ],
         "description": "A Node representing the root of the program schema 'membrane-meta-driver'. It provides actions to configure, perform actions, and query the program. It also contains fields for program collection, status, and tests."
