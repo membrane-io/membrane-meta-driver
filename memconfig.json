@@ -12,7 +12,8 @@
                 "name": "token",
                 "type": "String"
               }
-            ]
+            ],
+            "description": "Configures the 'membrane-meta-driver' program with the provided token"
           },
           {
             "name": "action",
@@ -23,7 +24,8 @@
                 "type": "String",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Performs an action within the 'membrane-meta-driver' program. The gref parameter is optional"
           },
           {
             "name": "query",
@@ -39,21 +41,25 @@
                 "type": "String",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Queries the 'membrane-meta-driver' program. The query and ref parameters are optional"
           }
         ],
         "fields": [
           {
             "name": "programs",
-            "type": "ProgramCollection"
+            "type": "ProgramCollection",
+            "description": "Collection of programs associated with 'membrane-meta-driver' program"
           },
           {
             "name": "status",
-            "type": "String"
+            "type": "String",
+            "description": "The status of the 'membrane-meta-driver' program"
           },
           {
             "name": "tests",
-            "type": "Tests"
+            "type": "Tests",
+            "description": "Tests associated with the 'membrane-meta-driver' program"
           }
         ],
         "description": "A Node representing the root of the program schema 'membrane-meta-driver'. It provides actions to configure, perform actions, and query the program. It also contains fields for program collection, status, and tests."
@@ -67,9 +73,11 @@
             "params": [
               {
                 "name": "pid",
-                "type": "String"
+                "type": "String",
+                "description": "The process ID (PID) of the program to retrieve."
               }
-            ]
+            ],
+            "description": "Accesses a single program in the 'membrane-meta-driver' schema."
           },
           {
             "name": "page",
@@ -78,14 +86,17 @@
               {
                 "name": "include_schemas",
                 "type": "Boolean",
-                "optional": true
+                "optional": true,
+                "description": "Specifies whether to include schemas in the program page response."
               },
               {
                 "name": "include_expressions",
                 "type": "Boolean",
-                "optional": true
+                "optional": true,
+                "description": "Specifies whether to include expressions in the program page response."
               }
-            ]
+            ],
+            "description": "Accesses a program page in the 'membrane-meta-driver' schema."
           }
         ],
         "description": "Collection of programs in the program schema 'membrane-meta-driver'. It contains fields for retrieving a single program and accessing program pages."
@@ -159,7 +170,8 @@
         "actions": [
           {
             "name": "testGetPrograms",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Action to test getting programs"
           }
         ],
         "description": "A set of tests for the program schema 'membrane-meta-driver'. It provides an action to test getting programs."
